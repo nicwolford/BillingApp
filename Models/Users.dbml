@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScreeningOne_Test" EntityNamespace="ScreeningONE.Models.Users" ContextNamespace="ScreeningONE" Class="UsersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageCode" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="UserMiddleInit" Type="System.Char" DbType="VarChar(1)" CanBeNull="true" />
+      <Association Name="aspnet_User_User" Member="aspnet_User" ThisKey="UserGUID" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Users" Member="aspnet_Users">
+    <Type Name="aspnet_User">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_User" Member="Users" ThisKey="UserId" OtherKey="UserGUID" Type="User" />
+      <Association Name="aspnet_User_aspnet_Membership" Member="aspnet_Membership" ThisKey="UserId" OtherKey="UserId" Type="aspnet_Membership" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Membership" Member="aspnet_Memberships">
+    <Type Name="aspnet_Membership">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordFormat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordSalt" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePIN" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="aspnet_User_aspnet_Membership" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.S1_Users_CreateMessageWithAction" Method="S1_Users_CreateMessageWithAction">
+    <Parameter Name="messageactiontype" Type="System.Int32" DbType="Int" />
+    <Parameter Name="messagetext" Type="System.String" DbType="VarChar(5000)" />
+    <Parameter Name="messageto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tocontacttype" Type="System.Int32" DbType="Int" />
+    <Parameter Name="messagefrom" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fromcontacttype" Type="System.Int32" DbType="Int" />
+    <Parameter Name="messageactionpath" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="sentdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="receiveddate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="S1_Users_CreateMessageWithActionResult">
+      <Column Name="ActionGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_InactivateMessageAction" Method="S1_Users_InactivateMessageAction">
+    <Parameter Name="messageactionguid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Users_GetUserProfileByName" Method="S1_Users_GetUserProfileByName">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="S1_Users_GetUserProfileByNameResult">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId1" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId1" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordFormat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordSalt" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePIN" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_ForgotPassword_RemoveGUID" Method="S1_Users_ForgotPassword_RemoveGUID">
+    <Parameter Name="ForgotPasswordGuid" Parameter="forgotPasswordGuid" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Users_ForgotPassword_GetUserName" Method="S1_Users_ForgotPassword_GetUserName">
+    <Parameter Name="ForgotPasswordGuid" Parameter="forgotPasswordGuid" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="S1_Users_ForgotPassword_GetUserNameResult">
+      <Column Name="ForgotPasswordUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ForgotPasswordAnswer" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_GetClientUsers" Method="S1_Users_GetClientUsers">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Users_GetClientUsersResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ShortName" Type="System.String" DbType="VarChar(72)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_GetAllUsers" Method="S1_Users_GetAllUsers">
+    <Parameter Name="UserStatus" Parameter="userStatus" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="S1_Users_GetAllUsersResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ShortName" Type="System.String" DbType="VarChar(72)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_CreateUser" Method="S1_Users_CreateUser">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="clientid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="isprimaryclient" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="userfirstname" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="userlastname" Type="System.String" DbType="VarChar(40)" />
+    <ElementType Name="S1_Users_CreateUserResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_VerifyEmail" Method="S1_Users_VerifyEmail">
+    <Parameter Name="confirmEmailGuid" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="S1_Users_VerifyEmailResult">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="MessageActionPath" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_ForgotPassword_CreateForgotPassword" Method="S1_Users_ForgotPassword_CreateForgotPassword">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="PasswordAnswer" Parameter="passwordAnswer" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="UserIP" Parameter="userIP" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="S1_Users_ForgotPassword_CreateForgotPasswordResult">
+      <Column Name="ForgotPassword" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_GetUserByEmail" Method="S1_Users_GetUserByEmail">
+    <Parameter Name="email" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="S1_Users_GetUserByEmailResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_ModifyUserName" Method="S1_Users_ModifyUserName">
+    <Parameter Name="OldUserName" Parameter="oldUserName" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="NewUserName" Parameter="newUserName" Type="System.String" DbType="NVarChar(256)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Users_Security_CanAccessInvoice" Method="S1_Users_Security_CanAccessInvoice">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Users_Security_CanAccessInvoiceResult">
+      <Column Name="Column1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_Security_CanAccessBillingContact" Method="S1_Users_Security_CanAccessBillingContact">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Users_Security_CanAccessBillingContactResult">
+      <Column Name="Column1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_GetClientContactForEmail" Method="S1_Users_GetClientContactForEmail">
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Users_GetClientContactForEmailResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ContactFirstName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactLastName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactZipCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ContactState" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sproc_AddEMailToQueue" Method="sproc_AddEMailToQueue">
+    <Parameter Name="email_to" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="email_cc" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="email_bcc" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="email_subject" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="email_from" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="email_body" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Users_ClientContactsFromUserID" Method="S1_Users_ClientContactsFromUserID">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Users_ClientContactsFromUserIDResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress2" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactCity" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactStateCode" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactZIP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactEmail" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactBusinessPhone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactFax" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPOName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactNotes" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDeliveryMethod" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryBillingContact1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnlyShowInvoices" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsBillingContact" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BillingContactStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.aspnet_GetUserInfoCustomSP" Method="aspnet_GetUserInfoCustomSP">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="aspnet_GetUserInfoCustomSPResult">
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.aspnet_GetUserInfoForFPCustomSP" Method="aspnet_GetUserInfoForFPCustomSP">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <ElementType Name="aspnet_GetUserInfoForFPCustomSPResult">
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Users_GetUserFromUserID" Method="S1_Users_GetUserFromUserID">
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Users_GetUserFromUserIDResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UserMiddleInit" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="UserGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScreeningONE_Test" Class="ClientContactsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.S1_ClientContacts_CreateBillingContact" Method="S1_ClientContacts_CreateBillingContact">
+    <Parameter Name="clientid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="clientcontactid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="deliverymethod" Type="System.Int32" DbType="Int" />
+    <Parameter Name="contactname" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="contactaddr1" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactaddr2" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactcity" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactstate" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="contactzip" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="contactbusinessphone" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="contactfax" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="contactemail" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="isprimary" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="POName" Parameter="pOName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PONumber" Parameter="pONumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="OnlyShowInvoices" Parameter="onlyShowInvoices" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="S1_ClientContacts_CreateBillingContactResult">
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_CreateClientContact" Method="S1_ClientContacts_CreateClientContact">
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="clientid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="contactfirstname" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="contactlastname" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="contacttitle" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactaddr1" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactaddr2" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactcity" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactstate" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="contactzip" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="contactbusinessphone" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="contactfax" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="contactemail" Type="System.String" DbType="VarChar(255)" />
+    <ElementType Name="S1_ClientContacts_CreateClientContactResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetAllBillingContactsFromUserID" Method="S1_ClientContacts_GetAllBillingContactsFromUserID">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ClientContacts_GetAllBillingContactsFromUserIDResult">
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress2" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactCity" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactStateCode" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactZIP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactEmail" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactBusinessPhone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactFax" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPOName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactNotes" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDeliveryMethod" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryBillingContact1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnlyShowInvoices" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetBillingContactHideFromClientFromUserID" Method="S1_ClientContacts_GetBillingContactHideFromClientFromUserID">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ClientContacts_GetBillingContactHideFromClientFromUserIDResult">
+      <Column Name="HideFromClient" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetBillingContactsFromClientID" Method="S1_ClientContacts_GetBillingContactsFromClientID">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ClientContacts_GetBillingContactsFromClientIDResult">
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_UpdateClientContact" Method="S1_ClientContacts_UpdateClientContact">
+    <Parameter Name="clientcontactid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="clientid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="contactfirstname" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="contactlastname" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="contacttitle" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="contactaddr1" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="contactaddr2" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="contactcity" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="contactstate" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="contactzip" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="contactbusinessphone" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="contactfax" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="contactemail" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="contactstatus" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_UpdateBillingContact" Method="S1_ClientContacts_UpdateBillingContact">
+    <Parameter Name="billingcontactid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="clientid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="clientcontactid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="deliverymethod" Type="System.Int32" DbType="Int" />
+    <Parameter Name="contactname" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="contactaddr1" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactaddr2" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactcity" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="contactstate" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="contactzip" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="contactbusinessphone" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="contactfax" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="contactemail" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="isprimary" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="POName" Parameter="pOName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PONumber" Parameter="pONumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="OnlyShowInvoices" Parameter="onlyShowInvoices" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="BillingContactStatus" Parameter="billingContactStatus" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NewPrimaryContactID" Parameter="newPrimaryContactID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_MassCreateUsers_GetClientContacts" Method="S1_MassCreateUsers_GetClientContacts">
+    <ElementType Name="S1_MassCreateUsers_GetClientContactsResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactState" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="IsPrimaryBillingContact" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryMethod" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_MassCreateUsers_UpdateClientContacts" Method="S1_MassCreateUsers_UpdateClientContacts">
+    <Parameter Name="ClientContactID" Parameter="clientContactID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_MassCreateUsers_GetClientContactsEmail" Method="S1_MassCreateUsers_GetClientContactsEmail">
+    <ElementType Name="S1_MassCreateUsers_GetClientContactsEmailResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactZipCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ContactState" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_DeleteContact" Method="S1_ClientContacts_DeleteContact">
+    <Parameter Name="billingcontactid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="clientcontactid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="clientid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ClientContacts_DeleteContactResult">
+      <Column Name="ErrorCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_FixIssuesBillingContact" Method="S1_ClientContacts_FixIssuesBillingContact">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetClientContactFromBillingContactID" Method="S1_ClientContacts_GetClientContactFromBillingContactID">
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ClientContacts_GetClientContactFromBillingContactIDResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress2" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactCity" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactStateCode" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactZIP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactEmail" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactBusinessPhone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactFax" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPOName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactNotes" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDeliveryMethod" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryBillingContact1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnlyShowInvoices" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BillingContactStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LoginUserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetClientContactFromClientContactID" Method="S1_ClientContacts_GetClientContactFromClientContactID">
+    <Parameter Name="ClientContactID" Parameter="clientContactID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ClientContacts_GetClientContactFromClientContactIDResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress2" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactCity" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactStateCode" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactZIP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactEmail" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactBusinessPhone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactFax" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPOName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactNotes" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDeliveryMethod" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryBillingContact1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnlyShowInvoices" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsBillingContact" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BillingContactStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LoginUserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetClientContactFromEmail" Method="S1_ClientContacts_GetClientContactFromEmail">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(256)" />
+    <ElementType Name="S1_ClientContacts_GetClientContactFromEmailResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BillingContactName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress2" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactCity" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactStateCode" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactZIP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactEmail" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactBusinessPhone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactFax" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPOName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactNotes" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDeliveryMethod" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryBillingContact1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnlyShowInvoices" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsBillingContact" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BillingContactStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoginUserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetClientContactFromUserID" Method="S1_ClientContacts_GetClientContactFromUserID">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ClientContacts_GetClientContactFromUserIDResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress2" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactCity" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactStateCode" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactZIP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactEmail" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactBusinessPhone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactFax" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPOName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactNotes" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDeliveryMethod" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryBillingContact1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnlyShowInvoices" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsBillingContact" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BillingContactStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LoginUserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetClientContactFromUserName" Method="S1_ClientContacts_GetClientContactFromUserName">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="S1_ClientContacts_GetClientContactFromUserNameResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress2" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactCity" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactStateCode" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactZIP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactEmail" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactBusinessPhone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactFax" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPOName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactNotes" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDeliveryMethod" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryBillingContact1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnlyShowInvoices" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserFirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="UserLastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsBillingContact" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BillingContactStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LoginUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ClientContacts_GetClientContactsFromClientID" Method="S1_ClientContacts_GetClientContactsFromClientID">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ClientContacts_GetClientContactsFromClientIDResult">
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactName" Type="System.String" DbType="VarChar(511) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientContactTitle" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactCity" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ClientContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ClientContactBusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactCellPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BillingContactName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress1" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactAddress2" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactCity" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactStateCode" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactZIP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactEmail" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactBusinessPhone" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactFax" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPOName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactPONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactNotes" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingDeliveryMethod" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimaryBillingContact" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnlyShowInvoices" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsBillingContact" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientContactStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BillingContactStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoginUserName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

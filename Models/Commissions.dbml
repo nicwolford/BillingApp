@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScreeningONE_Test" Class="CommissionsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.S1_Commissions_PackageCommissions" Method="S1_Commissions_PackageCommissions">
+    <ElementType Name="S1_Commissions_PackageCommissionsResult">
+      <Column Name="PackageCommissionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PackageName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PackageProducts" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="PackageCommissionRate" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Commissions_CreatePackageCommissions" Method="S1_Commissions_CreatePackageCommissions">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ClientName" Parameter="clientName" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="PackageName" Parameter="packageName" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="PackageProducts" Parameter="packageProducts" Type="System.String" DbType="VarChar(800)" />
+    <Parameter Name="PackageCommissionRate" Parameter="packageCommissionRate" Type="System.Decimal" DbType="Decimal(4,2)" />
+    <Parameter Name="BillingClientID" Parameter="billingClientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Commissions_CreatePackageCommissionsResult">
+      <Column Name="PackageCommissionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PackageName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PackageProducts" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="PackageCommissionRate" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Commissions_RemovePackageCommissions" Method="S1_Commissions_RemovePackageCommissions">
+    <Parameter Name="PackageCommissionID" Parameter="packageCommissionID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Commissions_RemovePackageCommissionsResult">
+      <Column Name="PackageCommissionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PackageName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PackageProducts" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="PackageCommissionRate" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Commissions_UpdatePackageCommissions" Method="S1_Commissions_UpdatePackageCommissions">
+    <Parameter Name="PackageCommissionID" Parameter="packageCommissionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ClientName" Parameter="clientName" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="PackageName" Parameter="packageName" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="PackageProducts" Parameter="packageProducts" Type="System.String" DbType="VarChar(800)" />
+    <Parameter Name="PackageCommissionRate" Parameter="packageCommissionRate" Type="System.Decimal" DbType="Decimal(4,2)" />
+    <Parameter Name="BillingClientID" Parameter="billingClientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Commissions_UpdatePackageCommissionsResult">
+      <Column Name="PackageCommissionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PackageName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="PackageProducts" Type="System.String" DbType="VarChar(800)" CanBeNull="true" />
+      <Column Name="PackageCommissionRate" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Commissions_ClientsSearchByClientName" Method="S1_Commissions_ClientsSearchByClientName">
+    <Parameter Name="ClientName" Parameter="clientName" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="S1_Commissions_ClientsSearchByClientNameResult">
+      <Column Name="ParentBillingClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillingClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Address1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DoNotInvoice" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GetsInvoiceDetail" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ImportClientSplitMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BillingGroup" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillingNotes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="AuditInvoices" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PackageName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PackageCommissionRate" Type="System.Decimal" DbType="Decimal(19,2)" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RankNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

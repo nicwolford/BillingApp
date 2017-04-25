@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScreeningONE" Class="InvoiceReportsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.S1_InvoiceReports_GetInvoiceDetail" Method="S1_InvoiceReports_GetInvoiceDetail">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GroupOrderID" Parameter="groupOrderID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_InvoiceReports_GetInvoiceDetailResult">
+      <Column Name="LineNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Detail" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupOrder" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RecordCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileNum" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ContactPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DateOrdered" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SSN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrderBy" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ProductDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="PrimaryClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

@@ -1,0 +1,5 @@
+Õ<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+	<tr>
+		<td>ID</td><td>Transaction_Date</td><td>Date_Ordered</td><td>Client_Name</td><td>Product_Type</td><td>Product_Description</td><td>File_Number</td><td>Reference</td><td>Ordered_By</td><td>Product_Price</td><td>Include_On_Invoice</td>
+	</tr>
+</table>

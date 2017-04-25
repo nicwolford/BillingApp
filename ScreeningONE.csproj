@@ -1,0 +1,1094 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF4D38F4-ED4E-40C1-92F4-6468FF0DEC94}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScreeningONE</RootNamespace>
+    <AssemblyName>ScreeningONE</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ephtmltopdf, Version=9.5.0.15046, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ephtmltopdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RKLib.ExportData, Version=1.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\RKLib.ExportData.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BillingImportController.cs" />
+    <Compile Include="Controllers\BillingStatementController.cs" />
+    <Compile Include="Controllers\ClientContactsController.cs" />
+    <Compile Include="Controllers\ClientProductsController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\CommissionsController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoiceReportsController.cs" />
+    <Compile Include="Controllers\InvoicesController.cs" />
+    <Compile Include="Controllers\MassCreateUsersController.cs" />
+    <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductTransactionsController.cs" />
+    <Compile Include="Controllers\QBExportController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\S1BaseController.cs" />
+    <Compile Include="Controllers\S1BasePublicController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\UtilsController.cs" />
+    <Compile Include="Controllers\VendorsController.cs" />
+    <Compile Include="DomainModels\BillingImport.cs" />
+    <Compile Include="DomainModels\BillingStatements.cs" />
+    <Compile Include="DomainModels\ClientContacts.cs" />
+    <Compile Include="DomainModels\Clients.cs" />
+    <Compile Include="DomainModels\Commissions.cs" />
+    <Compile Include="DomainModels\CustomUserInfoForFP.cs" />
+    <Compile Include="DomainModels\CustomUserInfo.cs" />
+    <Compile Include="DomainModels\InvoiceReports.cs" />
+    <Compile Include="DomainModels\Invoices.cs" />
+    <Compile Include="DomainModels\Messages.cs" />
+    <Compile Include="DomainModels\Products.cs" />
+    <Compile Include="DomainModels\ProductTransactions.cs" />
+    <Compile Include="DomainModels\Security.cs" />
+    <Compile Include="DomainModels\Vendors.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BillingImport.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingImport.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BillingStatement.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingStatement.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientContacts.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientContacts.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Clients.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Clients.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Commissions.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Commissions.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InvoiceReports.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvoiceReports.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Invoices.designer.cs">
+      <DependentUpon>Invoices.dbml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Messages.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Products.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Products.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductTransactions.cs">
+      <DependentUpon>ProductTransactions.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductTransactions.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductTransactions.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vendors.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Vendors.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\ErrorHandler.cs" />
+    <Compile Include="Objects\FileResult.cs" />
+    <Compile Include="Objects\IEnumerableOrderExtension.cs" />
+    <Compile Include="Objects\MailGun.cs" />
+    <Compile Include="DomainModels\ReportParameterType.cs" />
+    <Compile Include="Objects\RenderToString.cs" />
+    <Compile Include="DomainModels\Report.cs" />
+    <Compile Include="DomainModels\ReportParameter.cs" />
+    <Compile Include="Objects\ScreeningONEAuthorize.cs" />
+    <Compile Include="Objects\ScreeningONESendMail.cs" />
+    <Compile Include="Objects\SecurityExtension.cs" />
+    <Compile Include="Objects\StringExtensions.cs" />
+    <Compile Include="Objects\XMLResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ReportRepository.cs" />
+    <Compile Include="ViewModels\Account_ChangePass.cs" />
+    <Compile Include="ViewModels\Account_ConfirmedChangePass.cs" />
+    <Compile Include="ViewModels\Account_Register.cs" />
+    <Compile Include="ViewModels\BillingImport_Upload.cs" />
+    <Compile Include="ViewModels\BillingMessage_Details.cs" />
+    <Compile Include="ViewModels\BillingStatement_AccountActivity.cs" />
+    <Compile Include="ViewModels\BillingStatement_Index.cs" />
+    <Compile Include="ViewModels\BillingStatement_PrintPackages.cs" />
+    <Compile Include="ViewModels\ClientContacts_Details.cs" />
+    <Compile Include="ViewModels\ClientProducts_Modify.cs" />
+    <Compile Include="ViewModels\Clients_Details.cs" />
+    <Compile Include="ViewModels\Commissions_PackageCommissions.cs" />
+    <Compile Include="ViewModels\Invoices_CurrentInvoiceRemindersToSend.cs" />
+    <Compile Include="ViewModels\Invoices_OverdueInvoiceRemindersToSend.cs" />
+    <Compile Include="ViewModels\Invoices_ComposeOverdueInvoiceReminder.cs" />
+    <Compile Include="ViewModels\Invoices_OverdueInvoiceRemindersSent.cs" />
+    <Compile Include="ViewModels\Invoices_CurrentInvoiceRemindersSent.cs" />
+    <Compile Include="ViewModels\Invoices_ComposeCurrentInvoiceReminder.cs" />
+    <Compile Include="ViewModels\Invoices_InvoiceAndPaymentBalancer.cs" />
+    <Compile Include="ViewModels\InvoiceReports_Index.cs" />
+    <Compile Include="ViewModels\Invoices_Credit.cs" />
+    <Compile Include="ViewModels\Invoices_Details.cs" />
+    <Compile Include="ViewModels\Invoices_Index.cs" />
+    <Compile Include="ViewModels\Invoices_RelatedInvoices.cs" />
+    <Compile Include="ViewModels\Invoices_VerifyInvoiceSetup.cs" />
+    <Compile Include="ViewModels\Invoices_VerifyInvoiceSetupForClient.cs" />
+    <Compile Include="ViewModels\LogOn.cs" />
+    <Compile Include="ViewModels\MainMenu.cs" />
+    <Compile Include="ViewModels\Products.cs" />
+    <Compile Include="ViewModels\ProductTransactions_Add.cs" />
+    <Compile Include="ViewModels\ProductTransactions_Edit.cs" />
+    <Compile Include="ViewModels\ProductTransactions_Index.cs" />
+    <Compile Include="ViewModels\QBExport_Index.cs" />
+    <Compile Include="ViewModels\ReportManager.cs" />
+    <Compile Include="ViewModels\Security_Users.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\epengine.dll" />
+    <Content Include="bin\ephtmltopdf.dll" />
+    <Content Include="bin\ephtmltopdf.xml" />
+    <Content Include="bin\Ionic.Zip.dll" />
+    <Content Include="bin\Libs\epengine.dll" />
+    <Content Include="bin\Libs\ephtmltopdf.dll" />
+    <Content Include="bin\Libs\ephtmltopdf.xml" />
+    <Content Include="bin\Libs\Ionic.Zip.dll" />
+    <Content Include="bin\Libs\LumenWorks.Framework.IO.dll" />
+    <Content Include="bin\Libs\Newtonsoft.Json.dll" />
+    <Content Include="bin\Libs\RKLib.ExportData.dll" />
+    <Content Include="bin\LumenWorks.Framework.IO.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\RestSharp.dll" />
+    <Content Include="bin\RKLib.ExportData.dll" />
+    <Content Include="bin\ScreeningONE.dll" />
+    <Content Include="bin\ScreeningONE.pdb" />
+    <Content Include="bin\System.Net.Http.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.WebRequest.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="ckeditor\adapters\jquery.js" />
+    <Content Include="ckeditor\build-config.js" />
+    <Content Include="ckeditor\ckeditor.js" />
+    <Content Include="ckeditor\config.js" />
+    <Content Include="ckeditor\contents.css" />
+    <Content Include="ckeditor\lang\af.js" />
+    <Content Include="ckeditor\lang\ar.js" />
+    <Content Include="ckeditor\lang\bg.js" />
+    <Content Include="ckeditor\lang\bn.js" />
+    <Content Include="ckeditor\lang\bs.js" />
+    <Content Include="ckeditor\lang\ca.js" />
+    <Content Include="ckeditor\lang\cs.js" />
+    <Content Include="ckeditor\lang\cy.js" />
+    <Content Include="ckeditor\lang\da.js" />
+    <Content Include="ckeditor\lang\de.js" />
+    <Content Include="ckeditor\lang\el.js" />
+    <Content Include="ckeditor\lang\en-au.js" />
+    <Content Include="ckeditor\lang\en-ca.js" />
+    <Content Include="ckeditor\lang\en-gb.js" />
+    <Content Include="ckeditor\lang\en.js" />
+    <Content Include="ckeditor\lang\eo.js" />
+    <Content Include="ckeditor\lang\es.js" />
+    <Content Include="ckeditor\lang\et.js" />
+    <Content Include="ckeditor\lang\eu.js" />
+    <Content Include="ckeditor\lang\fa.js" />
+    <Content Include="ckeditor\lang\fi.js" />
+    <Content Include="ckeditor\lang\fo.js" />
+    <Content Include="ckeditor\lang\fr-ca.js" />
+    <Content Include="ckeditor\lang\fr.js" />
+    <Content Include="ckeditor\lang\gl.js" />
+    <Content Include="ckeditor\lang\gu.js" />
+    <Content Include="ckeditor\lang\he.js" />
+    <Content Include="ckeditor\lang\hi.js" />
+    <Content Include="ckeditor\lang\hr.js" />
+    <Content Include="ckeditor\lang\hu.js" />
+    <Content Include="ckeditor\lang\id.js" />
+    <Content Include="ckeditor\lang\is.js" />
+    <Content Include="ckeditor\lang\it.js" />
+    <Content Include="ckeditor\lang\ja.js" />
+    <Content Include="ckeditor\lang\ka.js" />
+    <Content Include="ckeditor\lang\km.js" />
+    <Content Include="ckeditor\lang\ko.js" />
+    <Content Include="ckeditor\lang\ku.js" />
+    <Content Include="ckeditor\lang\lt.js" />
+    <Content Include="ckeditor\lang\lv.js" />
+    <Content Include="ckeditor\lang\mk.js" />
+    <Content Include="ckeditor\lang\mn.js" />
+    <Content Include="ckeditor\lang\ms.js" />
+    <Content Include="ckeditor\lang\nb.js" />
+    <Content Include="ckeditor\lang\nl.js" />
+    <Content Include="ckeditor\lang\no.js" />
+    <Content Include="ckeditor\lang\pl.js" />
+    <Content Include="ckeditor\lang\pt-br.js" />
+    <Content Include="ckeditor\lang\pt.js" />
+    <Content Include="ckeditor\lang\ro.js" />
+    <Content Include="ckeditor\lang\ru.js" />
+    <Content Include="ckeditor\lang\sk.js" />
+    <Content Include="ckeditor\lang\sl.js" />
+    <Content Include="ckeditor\lang\sq.js" />
+    <Content Include="ckeditor\lang\sr-latn.js" />
+    <Content Include="ckeditor\lang\sr.js" />
+    <Content Include="ckeditor\lang\sv.js" />
+    <Content Include="ckeditor\lang\th.js" />
+    <Content Include="ckeditor\lang\tr.js" />
+    <Content Include="ckeditor\lang\ug.js" />
+    <Content Include="ckeditor\lang\uk.js" />
+    <Content Include="ckeditor\lang\vi.js" />
+    <Content Include="ckeditor\lang\zh-cn.js" />
+    <Content Include="ckeditor\lang\zh.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="ckeditor\plugins\div\dialogs\div.js" />
+    <Content Include="ckeditor\plugins\find\dialogs\find.js" />
+    <Content Include="ckeditor\plugins\flash\dialogs\flash.js" />
+    <Content Include="ckeditor\plugins\flash\images\placeholder.png" />
+    <Content Include="ckeditor\plugins\forms\dialogs\button.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\form.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\radio.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\select.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\textarea.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\textfield.js" />
+    <Content Include="ckeditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="ckeditor\plugins\icons.png" />
+    <Content Include="ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="ckeditor\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="ckeditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="ckeditor\plugins\lineheight\Notes.txt" />
+    <Content Include="ckeditor\plugins\lineheight\plugin.js" />
+    <Content Include="ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="ckeditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="ckeditor\plugins\preview\preview.html" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\angel_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\angry_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\broken_heart.png" />
+    <Content Include="ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\confused_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\cry_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\devil_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\embarrassed_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\envelope.png" />
+    <Content Include="ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\heart.png" />
+    <Content Include="ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\kiss.png" />
+    <Content Include="ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\lightbulb.png" />
+    <Content Include="ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\omg_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\regular_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\sad_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\shades_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\teeth_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_down.png" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_up.png" />
+    <Content Include="ckeditor\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\tongue_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\whatchutalkingabout_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\wink_smile.png" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="ckeditor\plugins\templates\dialogs\templates.css" />
+    <Content Include="ckeditor\plugins\templates\dialogs\templates.js" />
+    <Content Include="ckeditor\plugins\templates\templates\default.js" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="ckeditor\samples\ajax.html" />
+    <Content Include="ckeditor\samples\api.html" />
+    <Content Include="ckeditor\samples\appendto.html" />
+    <Content Include="ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="ckeditor\samples\assets\posteddata.php" />
+    <Content Include="ckeditor\samples\assets\sample.jpg" />
+    <Content Include="ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="ckeditor\samples\datafiltering.html" />
+    <Content Include="ckeditor\samples\divreplace.html" />
+    <Content Include="ckeditor\samples\index.html" />
+    <Content Include="ckeditor\samples\inlineall.html" />
+    <Content Include="ckeditor\samples\inlinebycode.html" />
+    <Content Include="ckeditor\samples\inlinetextarea.html" />
+    <Content Include="ckeditor\samples\jquery.html" />
+    <Content Include="ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="ckeditor\samples\readonly.html" />
+    <Content Include="ckeditor\samples\replacebyclass.html" />
+    <Content Include="ckeditor\samples\replacebycode.html" />
+    <Content Include="ckeditor\samples\sample.css" />
+    <Content Include="ckeditor\samples\sample.js" />
+    <Content Include="ckeditor\samples\sample_posteddata.php" />
+    <Content Include="ckeditor\samples\tabindex.html" />
+    <Content Include="ckeditor\samples\uicolor.html" />
+    <Content Include="ckeditor\samples\uilanguages.html" />
+    <Content Include="ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="ckeditor\skins\moono\dialog.css" />
+    <Content Include="ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="ckeditor\skins\moono\editor.css" />
+    <Content Include="ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="ckeditor\skins\moono\icons.png" />
+    <Content Include="ckeditor\skins\moono\icons_hidpi.png" />
+    <Content Include="ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="ckeditor\skins\moono\images\close.png" />
+    <Content Include="ckeditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="ckeditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="ckeditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="ckeditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="ckeditor\skins\moono\images\lock-open.png" />
+    <Content Include="ckeditor\skins\moono\images\lock.png" />
+    <Content Include="ckeditor\skins\moono\images\refresh.png" />
+    <Content Include="ckeditor\styles.js" />
+    <Content Include="Content\custom-theme\images\ui-anim_basic_16x16.gif" />
+    <Content Include="Content\custom-theme\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\custom-theme\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\custom-theme\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\custom-theme\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\custom-theme\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\custom-theme\images\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="Content\custom-theme\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\custom-theme\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\custom-theme\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\custom-theme\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\custom-theme\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\custom-theme\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\custom-theme\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\custom-theme\jquery-ui-1.8.custom.css" />
+    <Content Include="Content\images\01.png" />
+    <Content Include="Content\images\02.png" />
+    <Content Include="Content\images\03.png" />
+    <Content Include="Content\images\add.png" />
+    <Content Include="Content\images\ApplicantONE-invoicelogo.gif" />
+    <Content Include="Content\images\ApplicantONE-mid.gif" />
+    <Content Include="Content\images\Block-h.png" />
+    <Content Include="Content\images\Block-s.png" />
+    <Content Include="Content\images\Block-v.png" />
+    <Content Include="Content\images\BlockContentBullets.png" />
+    <Content Include="Content\images\BlockHeader.png" />
+    <Content Include="Content\images\BlockHeaderIcon.png" />
+    <Content Include="Content\images\Button.png" />
+    <Content Include="Content\images\calendar.gif" />
+    <Content Include="Content\images\contact.jpg" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\example_checkbox.png" />
+    <Content Include="Content\images\example_date.png" />
+    <Content Include="Content\images\example_dropdown.png" />
+    <Content Include="Content\images\example_htmlmemo.png" />
+    <Content Include="Content\images\example_literal.png" />
+    <Content Include="Content\images\example_memo.png" />
+    <Content Include="Content\images\example_multiselect.png" />
+    <Content Include="Content\images\example_sectionheader.png" />
+    <Content Include="Content\images\example_textbox.png" />
+    <Content Include="Content\images\Footer.png" />
+    <Content Include="Content\images\green.png" />
+    <Content Include="Content\images\Header.jpg" />
+    <Content Include="Content\images\Header.png" />
+    <Content Include="Content\images\load.gif" />
+    <Content Include="Content\images\MenuItem.png" />
+    <Content Include="Content\images\MenuItem.Western.Reporting.png" />
+    <Content Include="Content\images\MenuSeparator.png" />
+    <Content Include="Content\images\MenuSeparator.Western.Reporting.png" />
+    <Content Include="Content\images\nav.png" />
+    <Content Include="Content\images\nav.Western.Reporting.png" />
+    <Content Include="Content\images\Page-BgSimpleGradient.jpg" />
+    <Content Include="Content\images\pdficon_large.gif" />
+    <Content Include="Content\images\pdficon_small.gif" />
+    <Content Include="Content\images\PostBullets.png" />
+    <Content Include="Content\images\PostQuote.png" />
+    <Content Include="Content\images\question.gif" />
+    <Content Include="Content\images\red.png" />
+    <Content Include="Content\images\rssIcon.png" />
+    <Content Include="Content\images\ScreeningONE-invoicelogo.png" />
+    <Content Include="Content\images\screeningonecheck.gif" />
+    <Content Include="Content\images\Sheet-c.png" />
+    <Content Include="Content\images\Sheet-h.png" />
+    <Content Include="Content\images\Sheet-h.Western.Reporting.png" />
+    <Content Include="Content\images\Sheet-s.png" />
+    <Content Include="Content\images\Sheet-s.Western.Reporting.png" />
+    <Content Include="Content\images\Sheet-v.png" />
+    <Content Include="Content\images\Sheet-v.Western.Reporting.png" />
+    <Content Include="Content\images\spacer.gif" />
+    <Content Include="Content\images\spectacles.gif" />
+    <Content Include="Content\images\subitem-bg.png" />
+    <Content Include="Content\images\subitem-bg.Western.Reporting.png" />
+    <Content Include="Content\images\VS.png" />
+    <Content Include="Content\images\wr-logo3.png" />
+    <Content Include="Content\images\yellow.png" />
+    <Content Include="Content\ui.jqgrid.css" />
+    <Content Include="Content\ui.multiselect.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\3c925cc1-6906-48aa-8cf3-0f9dba426dcf.xls" />
+    <Content Include="Content\d178c609-cf3a-44d4-a3dd-0337a4ecc99c.csv" />
+    <Content Include="Libs\epengine.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\ephtmltopdf.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\ephtmltopdf.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\Ionic.Zip.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\LumenWorks.Framework.IO.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\RKLib.ExportData.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Models\BillingImport.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>BillingImport.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ckeditor\CHANGES.md" />
+    <Content Include="ckeditor\LICENSE.md" />
+    <Content Include="ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="ckeditor\plugins\scayt\README.md" />
+    <Content Include="ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="ckeditor\plugins\wsc\README.md" />
+    <Content Include="ckeditor\README.md" />
+    <Content Include="ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="ckeditor\skins\moono\readme.md" />
+    <Content Include="bin\ScreeningONE.dll.config" />
+    <None Include="Models\BillingImport.dbml.layout">
+      <DependentUpon>BillingImport.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\BillingStatement.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>BillingStatement.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\BillingStatement.dbml.layout">
+      <DependentUpon>BillingStatement.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\ClientContacts.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ClientContacts.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\ClientContacts.dbml.layout">
+      <DependentUpon>ClientContacts.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\Clients.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Clients.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\Clients.dbml.layout">
+      <DependentUpon>Clients.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\InvoiceReports.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>InvoiceReports.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Models\Commissions.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Commissions.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\InvoiceReports.dbml.layout">
+      <DependentUpon>InvoiceReports.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\Invoices.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Invoices.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\Invoices.dbml.layout">
+      <DependentUpon>Invoices.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\Messages.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Messages.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\Messages.dbml.layout">
+      <DependentUpon>Messages.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\Products.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Products.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\Products.dbml.layout">
+      <DependentUpon>Products.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\ProductTransactions.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ProductTransactions.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\ProductTransactions.dbml.layout">
+      <DependentUpon>ProductTransactions.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\Users.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Users.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\Users.dbml.layout">
+      <DependentUpon>Users.dbml</DependentUpon>
+    </None>
+    <Content Include="Models\Vendors.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Vendors.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\Vendors.dbml.layout">
+      <DependentUpon>Vendors.dbml</DependentUpon>
+    </None>
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\ScreeningONE Publish.pubxml" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\grid.jqueryui.js" />
+    <Content Include="Scripts\grid.locale-en.js" />
+    <None Include="Scripts\jquery-1.3.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.3.2.js" />
+    <None Include="Scripts\jquery-1.3.2.min-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.3.2.min.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.custom.min.js" />
+    <Content Include="Scripts\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\jquery.maskedinput-1.2.2.js" />
+    <Content Include="Scripts\jquery.maskMoney.0.2.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\password_strength_plugin.js" />
+    <Content Include="Scripts\ui.ebdatetimeselector.js" />
+    <Content Include="Scripts\ui.ebtextarea.js" />
+    <Content Include="Scripts\ui.multiselect.js" />
+    <Content Include="style.ie7.Western.Reporting.css" />
+    <Content Include="style.Western.Reporting.css" />
+    <Content Include="style.css" />
+    <Content Include="style.ie6.Western.Reporting.css" />
+    <Content Include="style.ie6.css" />
+    <Content Include="style.ie7.css" />
+    <Content Include="Views\Account\ChangePass.aspx" />
+    <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Account\ConfirmedChangePass.aspx" />
+    <Content Include="Views\Account\ConfirmEmail.aspx" />
+    <Content Include="Views\Account\CreateProfile.aspx" />
+    <Content Include="Views\Account\ForgotPassword.aspx" />
+    <Content Include="Views\Account\ForgotPasswordSuccess.aspx" />
+    <Content Include="Views\Account\LogOn.aspx" />
+    <Content Include="Views\BillingImport\ImportBillingFile.aspx" />
+    <Content Include="Views\BillingImport\MatchDescToProduct.ascx" />
+    <Content Include="Views\BillingImport\VerifyImport.aspx" />
+    <Content Include="Views\BillingStatement\AccountActivity.aspx" />
+    <Content Include="Views\BillingStatement\Home.aspx" />
+    <Content Include="Views\BillingStatement\Home_Disabled.aspx" />
+    <Content Include="Views\BillingStatement\Home_InvoicesOnly.aspx" />
+    <Content Include="Views\BillingStatement\Index.aspx" />
+    <Content Include="Views\BillingStatement\Index_Public.aspx" />
+    <Content Include="Views\BillingStatement\PrintPackages.aspx" />
+    <Content Include="Views\ClientContacts\AddClientContact.ascx" />
+    <Content Include="Views\ClientProducts\EditClientProduct.ascx" />
+    <Content Include="Views\ClientProducts\SelectClientProducts.ascx" />
+    <Content Include="Views\Clients\CreateClient.ascx" />
+    <Content Include="Views\Clients\Details.aspx" />
+    <Content Include="Views\Clients\Index.aspx" />
+    <Content Include="Views\Commissions\Index.aspx" />
+    <Content Include="Views\Help\BillingMessage.ascx" />
+    <Content Include="Views\Help\ClientHelpHome.aspx" />
+    <Content Include="Views\Home\Unauthorized.aspx" />
+    <Content Include="Views\InvoiceReports\Index.aspx" />
+    <Content Include="Views\Invoices\PreviewCurrentInvoiceReminders.aspx" />
+    <Content Include="Views\Invoices\PreviewOverdueInvoiceReminders.aspx" />
+    <Content Include="Views\Invoices\OverdueInvoiceRemindersSent.aspx" />
+    <Content Include="Views\Invoices\ComposeOverdueInvoiceReminder.aspx" />
+    <Content Include="Views\Invoices\CurrentInvoiceRemindersSent.aspx" />
+    <Content Include="Views\Invoices\ComposeCurrentInvoiceReminder.aspx" />
+    <Content Include="Views\Invoices\InvoiceAndPaymentBalancer.aspx" />
+    <Content Include="Views\Invoices\CreateNewCredit.ascx" />
+    <Content Include="Views\Invoices\Details.aspx" />
+    <Content Include="Views\Invoices\FinanceCharges.aspx" />
+    <Content Include="Views\Invoices\Index.aspx" />
+    <Content Include="Views\Invoices\RelatedInvoices.ascx" />
+    <Content Include="Views\Invoices\VerifyInvoiceIssueFix.ascx" />
+    <Content Include="Views\Invoices\VerifyInvoiceSetup.aspx" />
+    <Content Include="Views\Invoices\VerifyInvoiceSetupForClient.aspx" />
+    <Content Include="Views\MassCreateUsers\CreateEmails.aspx" />
+    <Content Include="Views\MassCreateUsers\CreateUsers.aspx" />
+    <Content Include="Views\MassCreateUsers\Index.aspx" />
+    <Content Include="Views\PDF\InvoiceReportsIndex.aspx" />
+    <Content Include="Views\PDF\InvoicesDetails.aspx" />
+    <Content Include="Views\PDF\BillingStatmentIndex.aspx" />
+    <Content Include="Views\PDF\BillingStatmentIndex_Public.aspx" />
+    <Content Include="Views\Products\AddProduct.ascx" />
+    <Content Include="Views\Products\TazworksErrorFix.ascx" />
+    <Content Include="Views\ProductTransactions\AddPartial.ascx" />
+    <Content Include="Views\ProductTransactions\EditPartial.ascx" />
+    <Content Include="Views\ProductTransactions\Index.aspx" />
+    <Content Include="Views\QBExport\Index.aspx" />
+    <Content Include="Views\Reports\Index.aspx" />
+    <Content Include="Views\Security\AddUserToClient.ascx" />
+    <Content Include="Views\Security\ChangePassword.aspx" />
+    <Content Include="Views\Security\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Security\CreateClientUser.ascx" />
+    <Content Include="Views\Security\Security.aspx" />
+    <Content Include="Views\Security\SecurityUserClientContacts.ascx" />
+    <Content Include="Views\Security\SecurityUsers.ascx" />
+    <Content Include="Views\Security\SecurityUserSettings.ascx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Shared\MainMenu.ascx" />
+    <Content Include="Views\Utils\Index.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Print.Master" />
+    <Content Include="Views\Shared\View.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\downloads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Commissions.dbml.layout">
+      <DependentUpon>Commissions.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50859</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

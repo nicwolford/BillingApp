@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScreeningONE" Class="BillingImportDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.S1_BillingImport_ClearTazworksImportTable" Method="S1_BillingImport_ClearTazworksImportTable">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UpdateTazworksImport" Method="S1_BillingImport_UpdateTazworksImport">
+    <Parameter Name="importid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="productdesc" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_GetImportErrorDescription" Method="S1_BillingImport_GetImportErrorDescription">
+    <Parameter Name="importid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_BillingImport_GetImportErrorDescriptionResult">
+      <Column Name="ProductDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_BillingImport_InsertImportBatch" Method="S1_BillingImport_InsertImportBatch">
+    <Parameter Name="VendorID" Parameter="vendorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="username" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="importfilename" Type="System.String" DbType="VarChar(255)" />
+    <ElementType Name="S1_BillingImport_InsertImportBatchResult">
+      <Column Name="ImportBatchID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_BillingImport_ClearTUImportTable" Method="S1_BillingImport_ClearTUImportTable">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_GetImportAuditResults" Method="S1_BillingImport_GetImportAuditResults">
+    <Parameter Name="vendorid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_BillingImport_GetImportAuditResultsResult">
+      <Column Name="TotalRecordCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_BillingImport_ClearXPImportTable" Method="S1_BillingImport_ClearXPImportTable">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UploadTransUnionData" Method="S1_BillingImport_UploadTransUnionData">
+    <Parameter Name="ImportBatchID" Parameter="importBatchID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TUSubscriberID" Parameter="tUSubscriberID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="InquiryDate" Parameter="inquiryDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InquiryTime" Parameter="inquiryTime" Type="System.String" DbType="VarChar(6)" />
+    <Parameter Name="ECOA" Parameter="eCOA" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="Surname" Parameter="surname" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="State" Parameter="state" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Zip" Parameter="zip" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="SSN" Parameter="sSN" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="SpouseFirstName" Parameter="spouseFirstName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="NetPrice" Parameter="netPrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="MMSSTo" Parameter="mMSSTo" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="TimeZone" Parameter="timeZone" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="ProductCode" Parameter="productCode" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="ProductType" Parameter="productType" Type="System.Char" DbType="VarChar(1)" />
+    <Parameter Name="Hit" Parameter="hit" Type="System.Char" DbType="VarChar(1)" />
+    <Parameter Name="UserReference" Parameter="userReference" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_GetNewClientProducts" Method="S1_BillingImport_GetNewClientProducts">
+    <ElementType Name="S1_BillingImport_GetNewClientProductsResult">
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_BillingImport_InsertTazworks1SearchText" Method="S1_BillingImport_InsertTazworks1SearchText">
+    <Parameter Name="productcode" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="searchtext" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="matcherrorcode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="permanentsearchflag" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="importid" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_PreVerifyImport" Method="S1_BillingImport_PreVerifyImport">
+    <Parameter Name="vendorid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_BillingImport_PreVerifyImportResult">
+      <Column Name="ImportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMsg" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="LineNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorDetail" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UploadTazworksData" Method="S1_BillingImport_UploadTazworksData">
+    <Parameter Name="VendorID" Parameter="vendorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FileNum" Parameter="fileNum" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClientNumber" Parameter="clientNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ClientName" Parameter="clientName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="SalesRep" Parameter="salesRep" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="LName" Parameter="lName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="FName" Parameter="fName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="MName" Parameter="mName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="SSN" Parameter="sSN" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ClientNumberOrdered" Parameter="clientNumberOrdered" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ClientNameOrdered" Parameter="clientNameOrdered" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="OrderBy" Parameter="orderBy" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Reference" Parameter="reference" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="DateOrdered" Parameter="dateOrdered" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ProductType" Parameter="productType" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ItemCode" Parameter="itemCode" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ProductDesc" Parameter="productDesc" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Price" Parameter="price" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="InvoiceNumber" Parameter="invoiceNumber" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Jurisdiction" Parameter="jurisdiction" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ItemDescription" Parameter="itemDescription" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="importbatchid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CoLName" Parameter="coLName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="CoFName" Parameter="coFName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="CoSSN" Parameter="coSSN" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_ImportExperian" Method="S1_BillingImport_ImportExperian">
+    <Parameter Name="vendorid" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_ImportTransUnion" Method="S1_BillingImport_ImportTransUnion">
+    <Parameter Name="vendorid" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_ImportTazworks" Method="S1_BillingImport_ImportTazworks">
+    <Parameter Name="vendorid" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_GetVendorProducts" Method="S1_BillingImport_GetVendorProducts">
+    <Parameter Name="vendorid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="importid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_BillingImport_GetVendorProductsResult">
+      <Column Name="ProductCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(308) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UpdateTUSurcharges" Method="S1_BillingImport_UpdateTUSurcharges">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UpdateXPSurcharges" Method="S1_BillingImport_UpdateXPSurcharges">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UpdateTaz1SoftwareFee" Method="S1_BillingImport_UpdateTaz1SoftwareFee">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UpdateTaz2SoftwareFee" Method="S1_BillingImport_UpdateTaz2SoftwareFee">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UpdateTaz1StateMVRAccessFees" Method="S1_BillingImport_UpdateTaz1StateMVRAccessFees">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UpdateTaz1StateMVRRecords" Method="S1_BillingImport_UpdateTaz1StateMVRRecords">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UploadQBBalanceSummaryData" Method="S1_BillingImport_UploadQBBalanceSummaryData">
+    <Parameter Name="BillAsClientName" Parameter="billAsClientName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_ClearQBBalanceSummaryTable" Method="S1_BillingImport_ClearQBBalanceSummaryTable">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_CleareDrugImportTable" Method="S1_BillingImport_CleareDrugImportTable">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UploadeDrugData" Method="S1_BillingImport_UploadeDrugData">
+    <Parameter Name="ImportBatchID" Parameter="importBatchID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CustomerName" Parameter="customerName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="CustomerNumber" Parameter="customerNumber" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="InvoiceNumber" Parameter="invoiceNumber" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ServiceDate" Parameter="serviceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Product" Parameter="product" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Fee" Parameter="fee" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="SSN" Parameter="sSN" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="EmployeeName" Parameter="employeeName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="COCNumber" Parameter="cOCNumber" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="SpecimenID" Parameter="specimenID" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Reason" Parameter="reason" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Comments" Parameter="comments" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_GetImportError" Method="S1_BillingImport_GetImportError">
+    <Parameter Name="ImportID" Parameter="importID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_BillingImport_GetImportErrorResult">
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductType" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemCode" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_BillingImport_FixImportError" Method="S1_BillingImport_FixImportError">
+    <Parameter Name="ImportID" Parameter="importID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ProductType" Parameter="productType" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ItemCode" Parameter="itemCode" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="productDesc" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_ImporteDrug" Method="S1_BillingImport_ImporteDrug">
+    <Parameter Name="vendorid" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UpdateTemp" Method="S1_BillingImport_UpdateTemp">
+    <Parameter Name="EDrugTempLoaded" Parameter="eDrugTempLoaded" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ExperianTempLoaded" Parameter="experianTempLoaded" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="QuickbooksTempLoaded" Parameter="quickbooksTempLoaded" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="TazWorksTempLoaded" Parameter="tazWorksTempLoaded" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="TransUnionTempLoaded" Parameter="transUnionTempLoaded" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_BillingImport_UploadExperianData" Method="S1_BillingImport_UploadExperianData">
+    <Parameter Name="ImportBatchID" Parameter="importBatchID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="XPRequesterNo" Parameter="xPRequesterNo" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="XPRecordType" Parameter="xPRecordType" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="XPMktPreamble" Parameter="xPMktPreamble" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="XPAccPreamble" Parameter="xPAccPreamble" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="XPSubcode" Parameter="xPSubcode" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="XPInquiryDate" Parameter="xPInquiryDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="XPInquiryTime" Parameter="xPInquiryTime" Type="System.String" DbType="VarChar(6)" />
+    <Parameter Name="XPLastName" Parameter="xPLastName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="XPSecondLastName" Parameter="xPSecondLastName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="XPFirstName" Parameter="xPFirstName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="XPMiddleName" Parameter="xPMiddleName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="XPGenerationCode" Parameter="xPGenerationCode" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="XPStreetNumber" Parameter="xPStreetNumber" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="XPStreetName" Parameter="xPStreetName" Type="System.String" DbType="VarChar(32)" />
+    <Parameter Name="XPStreetSuffix" Parameter="xPStreetSuffix" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="XPCity" Parameter="xPCity" Type="System.String" DbType="VarChar(32)" />
+    <Parameter Name="XPUnitID" Parameter="xPUnitID" Type="System.String" DbType="VarChar(32)" />
+    <Parameter Name="XPState" Parameter="xPState" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="XPZipCode" Parameter="xPZipCode" Type="System.String" DbType="VarChar(9)" />
+    <Parameter Name="XPHitCode" Parameter="xPHitCode" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="XPSSN" Parameter="xPSSN" Type="System.String" DbType="VarChar(9)" />
+    <Parameter Name="XPOperatorID" Parameter="xPOperatorID" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="XPDuplicateID" Parameter="xPDuplicateID" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="XPStatementID" Parameter="xPStatementID" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="XPInvoiceCodes" Parameter="xPInvoiceCodes" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="XPProductCode" Parameter="xPProductCode" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="XPProductPrice" Parameter="xPProductPrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="XPMKeyWord" Parameter="xPMKeyWord" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

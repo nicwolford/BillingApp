@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="screeningONE" Class="ProductsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.S1_Products_GetProductList" Method="S1_Products_GetProductList">
+    <ElementType Name="S1_Products_GetProductListResult">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BaseCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BaseCommission" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="IncludeOnInvoice" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Employment" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Business" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Tenant" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Volunteer" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Other" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Products_GetProductListFromClientAndVendor" Method="S1_Products_GetProductListFromClientAndVendor">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VendorID" Parameter="vendorID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Products_GetProductListFromClientAndVendorResult">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BaseCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BaseCommission" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="IncludeOnInvoice" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Employment" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Tenant" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Business" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Volunteer" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Other" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Products_GetProductListFromVendor" Method="S1_Products_GetProductListFromVendor">
+    <Parameter Name="VendorID" Parameter="vendorID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Products_GetProductListFromVendorResult">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(306) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Products_GetProductListFromClient" Method="S1_Products_GetProductListFromClient">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Products_GetProductListFromClientResult">
+      <Column Name="ClientProductsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BaseCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BaseCommission" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="IncludeOnInvoice" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Employment" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Tenant" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Business" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Volunteer" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Other" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="VendorName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ImportsAtBaseOrSales" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SalesPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Products_UpdateClientProductsInfo" Method="S1_Products_UpdateClientProductsInfo">
+    <Parameter Name="ClientProductsID" Parameter="clientProductsID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SalesPrice" Parameter="salesPrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="IncludeOnInvoice" Parameter="includeOnInvoice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ImportsAtBaseOrSales" Parameter="importsAtBaseOrSales" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Products_InsertClientProduct" Method="S1_Products_InsertClientProduct">
+    <Parameter Name="clientid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="productid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="vendorid" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Products_AddProduct" Method="S1_Products_AddProduct">
+    <Parameter Name="ProductCode" Parameter="productCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="BaseCost" Parameter="baseCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="BaseCommission" Parameter="baseCommission" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="IncludeOnInvoice" Parameter="includeOnInvoice" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="Employment" Parameter="employment" Type="System.Decimal" DbType="SmallMoney" />
+    <Parameter Name="Tenant" Parameter="tenant" Type="System.Decimal" DbType="SmallMoney" />
+    <Parameter Name="Business" Parameter="business" Type="System.Decimal" DbType="SmallMoney" />
+    <Parameter Name="Volunteer" Parameter="volunteer" Type="System.Decimal" DbType="SmallMoney" />
+    <Parameter Name="Other" Parameter="other" Type="System.Decimal" DbType="SmallMoney" />
+    <ElementType Name="S1_Products_AddProductResult">
+      <Column Name="productID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

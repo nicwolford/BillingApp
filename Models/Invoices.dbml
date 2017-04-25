@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScreeningONE_Test" EntityNamespace="ScreeningONE.Models" ContextNamespace="ScreeningONE" Class="InvoicesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.S1_Invoices_GetInvoicesLines" Method="S1_Invoices_GetInvoicesLines">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetInvoicesLinesResult">
+      <Column Name="InvoiceLineNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Col1Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Col2Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Col3Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Col4Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Col5Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Col6Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Col7Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Col8Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_UpdateInvoiceLineText" Method="S1_Invoices_UpdateInvoiceLineText">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="InvoiceLineNumber" Parameter="invoiceLineNumber" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Col1Text" Parameter="col1Text" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Col2Text" Parameter="col2Text" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Col3Text" Parameter="col3Text" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Col4Text" Parameter="col4Text" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Col5Text" Parameter="col5Text" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Col6Text" Parameter="col6Text" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Col7Text" Parameter="col7Text" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Col8Text" Parameter="col8Text" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetExportInvoicesWithNullBillAsClientName" Method="S1_Invoices_GetExportInvoicesWithNullBillAsClientName">
+    <ElementType Name="S1_Invoices_GetExportInvoicesWithNullBillAsClientNameResult">
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetCountOfExportInvoicesWithNullBillAsClientName" Method="S1_Invoices_GetCountOfExportInvoicesWithNullBillAsClientName">
+    <ElementType Name="S1_Invoices_GetCountOfExportInvoicesWithNullBillAsClientNameResult">
+      <Column Name="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetBillingGroupsList" Method="S1_Invoices_GetBillingGroupsList">
+    <ElementType Name="S1_Invoices_GetBillingGroupsListResult">
+      <Column Name="BillingGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingGroupName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoicesToCreateFinanceChargesFor" Method="S1_Invoices_GetInvoicesToCreateFinanceChargesFor">
+    <Parameter Name="FinanceChargeDate" Parameter="financeChargeDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="S1_Invoices_GetInvoicesToCreateFinanceChargesForResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(51) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalInvoiceAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceAmountDue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PaymentAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="FinanceChargeAmount" Type="System.Decimal" DbType="Decimal(0,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_VoidInvoice" Method="S1_Invoices_VoidInvoice">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_ReleaseInvoice" Method="S1_Invoices_ReleaseInvoice">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetReleaseInvoiceGroup" Method="S1_Invoices_GetReleaseInvoiceGroup">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetReleaseInvoiceGroupResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Released" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_ReleasePendingInvoice" Method="S1_Invoices_ReleasePendingInvoice">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoices_DateRange" Method="S1_Invoices_GetInvoices_DateRange">
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ClientIDFilter" Parameter="clientIDFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillingContactIDFilter" Parameter="billingContactIDFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillingContactAnyClient" Parameter="billingContactAnyClient" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="S1_Invoices_GetInvoices_DateRangeResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OriginalAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ReleasedStatusText" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetPendingReleaseInvoiceGroup" Method="S1_Invoices_GetPendingReleaseInvoiceGroup">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetPendingReleaseInvoiceGroupResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Contact" Type="System.String" DbType="VarChar(357) NOT NULL" CanBeNull="false" />
+      <Column Name="ReleasedStatusText" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoicesFromBillingContactID" Method="S1_Invoices_GetInvoicesFromBillingContactID">
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetInvoicesFromBillingContactIDResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OriginalAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetUnpaidInvoicesFromBillingContactID" Method="S1_Invoices_GetUnpaidInvoicesFromBillingContactID">
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetUnpaidInvoicesFromBillingContactIDResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OriginalAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoiceFromInvoiceNumber" Method="S1_Invoices_GetInvoiceFromInvoiceNumber">
+    <Parameter Name="InvoiceNumber" Parameter="invoiceNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetInvoiceFromInvoiceNumberResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="VoidedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="VoidedByUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOfColumns" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Col1Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col2Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col3Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col4Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col5Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col6Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col7Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col8Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CreateInvoicesBatchID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillTo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="POName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BillingReportGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceExported" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceExportedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RelatedInvoiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Released" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="DontShowOnStatement" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetExportFinanceCharges" Method="S1_Invoices_GetExportFinanceCharges">
+    <ElementType Name="S1_Invoices_GetExportFinanceChargesResult">
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoices_DateRange_Paged" Method="S1_Invoices_GetInvoices_DateRange_Paged">
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ClientIDFilter" Parameter="clientIDFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillingContactIDFilter" Parameter="billingContactIDFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillingContactAnyClient" Parameter="billingContactAnyClient" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="DeliveryMethodFilter" Parameter="deliveryMethodFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReleaseStatusFilter" Parameter="releaseStatusFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="InvoiceNumberFilter" Parameter="invoiceNumberFilter" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CurrentPage" Parameter="currentPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RowsPerPage" Parameter="rowsPerPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OrderBy" Parameter="orderBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="OrderDir" Parameter="orderDir" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="S1_Invoices_GetInvoices_DateRange_PagedResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OriginalAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ReleasedStatusText" Type="System.String" DbType="VarChar(63) NOT NULL" CanBeNull="false" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_SetInvoiceAsExported" Method="S1_Invoices_SetInvoiceAsExported">
+    <Parameter Name="InvoiceNumber" Parameter="invoiceNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="QBTransactionID" Parameter="qBTransactionID" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_QBExportLog_AddNextStep" Method="S1_Invoices_QBExportLog_AddNextStep">
+    <Parameter Name="NextExportStep" Parameter="nextExportStep" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_QBExportLog_GetLastStep" Method="S1_Invoices_QBExportLog_GetLastStep">
+    <ElementType Name="S1_Invoices_QBExportLog_GetLastStepResult">
+      <Column Name="ExportStep" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExportTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetExportCreditMemos" Method="S1_Invoices_GetExportCreditMemos">
+    <ElementType Name="S1_Invoices_GetExportCreditMemosResult">
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_QBExportLinkCredits_AddCredit" Method="S1_Invoices_QBExportLinkCredits_AddCredit">
+    <Parameter Name="CreditInvoiceNumber" Parameter="creditInvoiceNumber" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_QBExportLinkCredits_GetCreditsWithMissingRelatedInvoiceTxnIDs" Method="S1_Invoices_QBExportLinkCredits_GetCreditsWithMissingRelatedInvoiceTxnIDs">
+    <ElementType Name="S1_Invoices_QBExportLinkCredits_GetCreditsWithMissingRelatedInvoiceTxnIDsResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_SetInvoiceTxnID" Method="S1_Invoices_SetInvoiceTxnID">
+    <Parameter Name="InvoiceNumber" Parameter="invoiceNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="QBTransactionID" Parameter="qBTransactionID" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_QBExportLinkCredits_GetCreditsToLink" Method="S1_Invoices_QBExportLinkCredits_GetCreditsToLink">
+    <ElementType Name="S1_Invoices_QBExportLinkCredits_GetCreditsToLinkResult">
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CreditMemoTxnID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceTxnID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_QBExportLog_GetAll" Method="S1_Invoices_QBExportLog_GetAll">
+    <ElementType Name="S1_Invoices_QBExportLog_GetAllResult">
+      <Column Name="QBExportLogID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExportStep" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExportTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExportTimeString" Type="System.String" DbType="VarChar(21)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoiceEmail" Method="S1_Invoices_GetInvoiceEmail">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetInvoiceEmailResult">
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_ModifyCredit" Method="S1_Invoices_ModifyCredit">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceAmount" Parameter="invoiceAmount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="PublicDescription" Parameter="publicDescription" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PrivateDescription" Parameter="privateDescription" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RelatedInvoiceID" Parameter="relatedInvoiceID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetExportInvoices" Method="S1_Invoices_GetExportInvoices">
+    <ElementType Name="S1_Invoices_GetExportInvoicesResult">
+      <Column Name="BillAsClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetLastQBPaymentsUpdateDate" Method="S1_Invoices_GetLastQBPaymentsUpdateDate">
+    <ElementType Name="S1_Invoices_GetLastQBPaymentsUpdateDateResult">
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoicePaymentsAndCredits" Method="S1_Invoices_GetInvoicePaymentsAndCredits">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetInvoicePaymentsAndCreditsResult">
+      <Column Name="PaymentsAndCredits" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_MarkCreditsAsLinked" Method="S1_Invoices_MarkCreditsAsLinked">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_QBExportLog_DeleteExportStep" Method="S1_Invoices_QBExportLog_DeleteExportStep">
+    <Parameter Name="ExportLogStepID" Parameter="exportLogStepID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoices_DateRange_Paged_AuditOnly" Method="S1_Invoices_GetInvoices_DateRange_Paged_AuditOnly">
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ClientIDFilter" Parameter="clientIDFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillingContactIDFilter" Parameter="billingContactIDFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BillingContactAnyClient" Parameter="billingContactAnyClient" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="DeliveryMethodFilter" Parameter="deliveryMethodFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReleaseStatusFilter" Parameter="releaseStatusFilter" Type="System.Int32" DbType="Int" />
+    <Parameter Name="InvoiceNumberFilter" Parameter="invoiceNumberFilter" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CurrentPage" Parameter="currentPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RowsPerPage" Parameter="rowsPerPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OrderBy" Parameter="orderBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="OrderDir" Parameter="orderDir" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="S1_Invoices_GetInvoices_DateRange_Paged_AuditOnlyResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceTypeDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OriginalAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ReleasedStatusText" Type="System.String" DbType="VarChar(63) NOT NULL" CanBeNull="false" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetReferenceSplitContacts" Method="S1_Invoices_GetReferenceSplitContacts">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetReferenceSplitContactsResult">
+      <Column Name="InvoiceSplitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetReleaseInvoiceGroupToEmail" Method="S1_Invoices_GetReleaseInvoiceGroupToEmail">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetReleaseInvoiceGroupToEmailResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="IsPrimaryBillingContact" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetLastInvoicesCreated" Method="S1_Invoices_GetLastInvoicesCreated">
+    <ElementType Name="S1_Invoices_GetLastInvoicesCreatedResult">
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_SQLJobCreateInvoices" Method="S1_Invoices_SQLJobCreateInvoices">
+    <Parameter Name="StartTransactionDate" Parameter="startTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndTransactionDate" Parameter="endTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="BillingGroup" Parameter="billingGroup" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_SQLJobCreateInvoicesForClient" Method="S1_Invoices_SQLJobCreateInvoicesForClient">
+    <Parameter Name="StartTransactionDate" Parameter="startTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndTransactionDate" Parameter="endTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreateCredit" Method="S1_Invoices_CreateCredit">
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceAmount" Parameter="invoiceAmount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="PublicDescription" Parameter="publicDescription" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PrivateDescription" Parameter="privateDescription" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RelatedInvoiceID" Parameter="relatedInvoiceID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreateFinanceCharge" Method="S1_Invoices_CreateFinanceCharge">
+    <Parameter Name="FinanceChargeDate" Parameter="financeChargeDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreateInvoicesBatchID" Parameter="createInvoicesBatchID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreateInvoices" Method="S1_Invoices_CreateInvoices">
+    <Parameter Name="StartTransactionDate" Parameter="startTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndTransactionDate" Parameter="endTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="BillingGroup" Parameter="billingGroup" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreateInvoicesForClient" Method="S1_Invoices_CreateInvoicesForClient">
+    <Parameter Name="StartTransactionDate" Parameter="startTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndTransactionDate" Parameter="endTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreateInvoicesVerify" Method="S1_Invoices_CreateInvoicesVerify">
+    <Parameter Name="StartTransactionDate" Parameter="startTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndTransactionDate" Parameter="endTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="BillingGroup" Parameter="billingGroup" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_CreateInvoicesVerifyResult">
+      <Column Name="DataSetName" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreateInvoicesVerifyForClient" Method="S1_Invoices_CreateInvoicesVerifyForClient">
+    <Parameter Name="StartTransactionDate" Parameter="startTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndTransactionDate" Parameter="endTransactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_CreateInvoicesVerifyForClientResult">
+      <Column Name="DataSetName" Type="System.String" DbType="VarChar(35) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreateQuickBooksExportError" Method="S1_Invoices_CreateQuickBooksExportError">
+    <Parameter Name="ExportErrorText" Parameter="exportErrorText" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetPaymentsForInvoiceBalancer" Method="S1_Invoices_GetPaymentsForInvoiceBalancer">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="S1_Invoices_GetPaymentsForInvoiceBalancerResult">
+      <Column Name="RootParentClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaymentContact" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClientContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ContactFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="PaymentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PaymentMethodID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QBTransactionID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsPaymentInvoice" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InvoiceTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillTo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="POName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="InvoiceExported" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InvoiceExportedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RelatedInvoiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DontShowOnStatement" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InvoicePaymentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IpQBTransactionID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IpAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreatePayment" Method="S1_Invoices_CreatePayment">
+    <Parameter Name="InvoiceDate" Parameter="invoiceDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="InvoiceAmount" Parameter="invoiceAmount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PaymentMethodID" Parameter="paymentMethodID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CheckNumber" Parameter="checkNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="QBTransactionID" Parameter="qBTransactionID" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="S1_Invoices_CreatePaymentResult">
+      <Column Name="PaymentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_CreateInvoicePayment" Method="S1_Invoices_CreateInvoicePayment">
+    <Parameter Name="PaymentID" Parameter="paymentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReferenceNumber" Parameter="referenceNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="QBTransactionID" Parameter="qBTransactionID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="BillingContactID" Parameter="billingContactID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_CreateInvoicePaymentResult">
+      <Column Name="InvoicePaymentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_CurrentInvoiceRemindersSent" Method="S1_Invoices_CurrentInvoiceRemindersSent">
+    <ElementType Name="S1_Invoices_CurrentInvoiceRemindersSentResult">
+      <Column Name="MessageGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="BodyFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BadEmailAddress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FromUserEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="FromUserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FromUserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FromMiddleInit" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="FromFullName" Type="System.String" DbType="VarChar(513)" CanBeNull="true" />
+      <Column Name="ToUserEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ToUserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ToUserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ToMiddleInit" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="ToFullName" Type="System.String" DbType="VarChar(513)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_CurrentInvoiceRemindersToSend" Method="S1_Invoices_CurrentInvoiceRemindersToSend">
+    <ElementType Name="S1_Invoices_CurrentInvoiceRemindersToSendResult">
+      <Column Name="MessageGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="BodyFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BadEmailAddress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FromUserEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="FromUserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FromUserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FromMiddleInit" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="FromFullName" Type="System.String" DbType="VarChar(513)" CanBeNull="true" />
+      <Column Name="ToUserEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ToUserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ToUserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ToMiddleInit" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="ToFullName" Type="System.String" DbType="VarChar(513)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_OverdueInvoiceRemindersSent" Method="S1_Invoices_OverdueInvoiceRemindersSent">
+    <ElementType Name="S1_Invoices_OverdueInvoiceRemindersSentResult">
+      <Column Name="MessageGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="BodyFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BadEmailAddress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FromUserEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="FromUserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FromUserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FromMiddleInit" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="FromFullName" Type="System.String" DbType="VarChar(513)" CanBeNull="true" />
+      <Column Name="ToUserEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ToUserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ToUserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ToMiddleInit" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="ToFullName" Type="System.String" DbType="VarChar(513)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_OverdueInvoiceRemindersToSend" Method="S1_Invoices_OverdueInvoiceRemindersToSend">
+    <ElementType Name="S1_Invoices_OverdueInvoiceRemindersToSendResult">
+      <Column Name="MessageGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="BodyFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BadEmailAddress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FromUserEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="FromUserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FromUserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FromMiddleInit" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="FromFullName" Type="System.String" DbType="VarChar(513)" CanBeNull="true" />
+      <Column Name="ToUserEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ToUserFirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ToUserLastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ToMiddleInit" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="ToFullName" Type="System.String" DbType="VarChar(513)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_PreviewCurrentInvoiceReminder" Method="S1_Invoices_PreviewCurrentInvoiceReminder">
+    <Parameter Name="FromUserId" Parameter="fromUserId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MessageSubject" Parameter="messageSubject" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="MessageText" Parameter="messageText" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="S1_Invoices_PreviewCurrentInvoiceReminderResult">
+      <Column Name="MessageGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="BodyFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BadEmailAddress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_PreviewOverdueInvoiceReminder" Method="S1_Invoices_PreviewOverdueInvoiceReminder">
+    <Parameter Name="FromUserId" Parameter="fromUserId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MessageSubject" Parameter="messageSubject" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="MessageText" Parameter="messageText" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="UserFinanceChargeDate" Parameter="userFinanceChargeDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="S1_Invoices_PreviewOverdueInvoiceReminderResult">
+      <Column Name="MessageGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="BodyFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BadEmailAddress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_RemovePreviewMessageForCurrentInvoice" Method="S1_Invoices_RemovePreviewMessageForCurrentInvoice">
+    <Parameter Name="MessageGuid" Parameter="messageGuid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_RemovePreviewMessageForOverdueInvoice" Method="S1_Invoices_RemovePreviewMessageForOverdueInvoice">
+    <Parameter Name="MessageGuid" Parameter="messageGuid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_TruncateCurrentInvoiceReminder" Method="S1_Invoices_TruncateCurrentInvoiceReminder">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_TruncateOverdueInvoiceReminder" Method="S1_Invoices_TruncateOverdueInvoiceReminder">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Invoices_SendCurrentInvoiceReminder" Method="S1_Invoices_SendCurrentInvoiceReminder">
+    <ElementType Name="S1_Invoices_SendCurrentInvoiceReminderResult">
+      <Column Name="MessageGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="BodyFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_SendOverdueInvoiceReminder" Method="S1_Invoices_SendOverdueInvoiceReminder">
+    <ElementType Name="S1_Invoices_SendOverdueInvoiceReminderResult">
+      <Column Name="MessageGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="MessageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromContactType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="BodyFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Invoices_GetInvoice" Method="S1_Invoices_GetInvoice">
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Invoices_GetInvoiceResult">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Col1Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col2Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col3Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col4Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col5Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col6Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col7Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Col8Header" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NumberOfColumns" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="BillTo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="POName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PONumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BillingReportGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DueText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceTypeDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ContactAddress1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactAddress2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactCity" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ContactStateCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ContactZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ContactEmail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ContactFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ContactPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DeliveryMethod" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingContactID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RelatedInvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingGroup" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

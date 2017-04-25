@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScreeningONE" Class="ProductTransactionsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.S1_ProductTransactions_CreateProductTransaction" Method="S1_ProductTransactions_CreateProductTransaction">
+    <Parameter Name="ProductID" Parameter="productID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VendorID" Parameter="vendorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TransactionDate" Parameter="transactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="DateOrdered" Parameter="dateOrdered" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="OrderBy" Parameter="orderBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Reference" Parameter="reference" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FileNum" Parameter="fileNum" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FName" Parameter="fName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="LName" Parameter="lName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="MName" Parameter="mName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="SSN" Parameter="sSN" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ProductDescription" Parameter="productDescription" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ProductType" Parameter="productType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ProductPrice" Parameter="productPrice" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_ProductTransactions_GetProductTransaction" Method="S1_ProductTransactions_GetProductTransaction">
+    <Parameter Name="ProductTransactionID" Parameter="productTransactionID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ProductTransactions_GetProductTransactionResult">
+      <Column Name="ProductTransactionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VendorName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateOrdered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="OrderBy" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FileNum" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="IncludeOnInvoice" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="LName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SSN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="ExternalInvoiceNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SalesRep" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CoLName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CoFName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CoMName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CoSSN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BasePrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="ImportsAtBaseOrSales" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ProductTransactions_GetProductTransactions" Method="S1_ProductTransactions_GetProductTransactions">
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_ProductTransactions_GetProductTransactionsResult">
+      <Column Name="ProductTransactionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileNum" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrderBy" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateOrdered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="FName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="LName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExternalInvoiceNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SalesRep" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IncludeOnInvoice" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ProductTransactions_GetProductTransactionsPaged" Method="S1_ProductTransactions_GetProductTransactionsPaged">
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FileNum" Parameter="fileNum" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CurrentPage" Parameter="currentPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RowsPerPage" Parameter="rowsPerPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OrderBy" Parameter="orderBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="OrderDir" Parameter="orderDir" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="S1_ProductTransactions_GetProductTransactionsPagedResult">
+      <Column Name="ProductTransactionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileNum" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrderBy" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateOrdered" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="FName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="LName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="ExternalInvoiceNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SalesRep" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IncludeOnInvoice" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_ProductTransactions_RemoveProductTransaction" Method="S1_ProductTransactions_RemoveProductTransaction">
+    <Parameter Name="ProductTransactionID" Parameter="productTransactionID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_ProductTransactions_UpdateProductTransaction" Method="S1_ProductTransactions_UpdateProductTransaction">
+    <Parameter Name="ProductTransactionID" Parameter="productTransactionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProductID" Parameter="productID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VendorID" Parameter="vendorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TransactionDate" Parameter="transactionDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="DateOrdered" Parameter="dateOrdered" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="OrderBy" Parameter="orderBy" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Reference" Parameter="reference" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FileNum" Parameter="fileNum" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FName" Parameter="fName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="LName" Parameter="lName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="MName" Parameter="mName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="SSN" Parameter="sSN" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ProductDescription" Parameter="productDescription" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ProductType" Parameter="productType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ProductPrice" Parameter="productPrice" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

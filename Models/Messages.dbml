@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScreeningONE_Test" EntityNamespace="ScreeningONE.Models" ContextNamespace="ScreeningONE" Class="MessagesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress2016;Initial Catalog=WesternReportingLocal;Persist Security Info=True;User ID=screeningONE_DevUser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScreeningONEConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.S1_Messages_GetMessageTemplateReservedWordList" Method="S1_Messages_GetMessageTemplateReservedWordList">
+    <Parameter Name="MessageTemplateName" Parameter="messageTemplateName" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="S1_Messages_GetMessageTemplateReservedWordListResult">
+      <Column Name="ReservedWord" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ReservedWordDisplay" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Messages_GetMessageTemplate" Method="S1_Messages_GetMessageTemplate">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MessageName" Parameter="messageName" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="S1_Messages_GetMessageTemplateResult">
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Messages_GetMessageTemplateList" Method="S1_Messages_GetMessageTemplateList">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="S1_Messages_GetMessageTemplateListResult">
+      <Column Name="MessageName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPlainText" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Messages_CreateMessageWithAction" Method="S1_Messages_CreateMessageWithAction">
+    <Parameter Name="messageactiontype" Type="System.Int32" DbType="Int" />
+    <Parameter Name="messagesubject" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="messagetext" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="messageto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tocontacttype" Type="System.Int32" DbType="Int" />
+    <Parameter Name="messagefrom" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fromcontacttype" Type="System.Int32" DbType="Int" />
+    <Parameter Name="messageactionpath" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="sentdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="receiveddate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="bodyformat" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="MessageID" Parameter="messageID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MessageActionGUID" Parameter="messageActionGUID" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Messages_UpdateMessageAndMarkForSending" Method="S1_Messages_UpdateMessageAndMarkForSending">
+    <Parameter Name="MessageID" Parameter="messageID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MessageSubject" Parameter="messageSubject" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="MessageText" Parameter="messageText" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.S1_Messages_GetMessageTemplateRecord" Method="S1_Messages_GetMessageTemplateRecord">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MessageName" Parameter="messageName" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="S1_Messages_GetMessageTemplateRecordResult">
+      <Column Name="MessageActionTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageTemplateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MessageName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPlainText" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.S1_Messages_AddMessage" Method="S1_Messages_AddMessage">
+    <Parameter Name="MessageActionTypeID" Parameter="messageActionTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MessageSubject" Parameter="messageSubject" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="MessageText" Parameter="messageText" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="MessageTo" Parameter="messageTo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ToContactType" Parameter="toContactType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MessageFrom" Parameter="messageFrom" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromContactType" Parameter="fromContactType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EmailAddressTo" Parameter="emailAddressTo" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="MessageGUID" Parameter="messageGUID" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
